@@ -16,6 +16,10 @@ namespace RepositoryLayer
         }
         DbSet<BookDetails> BookDetails { get; set; }
         DbSet<PersonDetails> PersonDetails { get; set; }
-        
+
+        public void Remove<T>(PersonDetails d)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

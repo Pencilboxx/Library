@@ -9,15 +9,17 @@ namespace ServiceLayer
     public class PersonService : IPersonDetails
     {
         public ApplicationContext ApplicationContext;
+        
+
         public PersonService(ApplicationContext applicationContext)
         {
             ApplicationContext = applicationContext;
         }
-        
-        public void DeletePerson(int id)
+
+        public void DeletePerson(int personid)
         {
-            PersonDetails c = GetPersonDetails(id);
-            if (id != null)
+            PersonDetails c = GetPersonDetails(personid);
+            if (personid != null)
             {
                 ApplicationContext.Remove<PersonDetails>(c);
                 ApplicationContext.SaveChanges();
@@ -30,9 +32,9 @@ namespace ServiceLayer
             return ApplicationContext.Set<PersonDetails>().ToList();
         }
 
-        public PersonDetails GetPersonDetails(int pid)
+        public PersonDetails GetPersonDetails(int personid)
         {
-            return ApplicationContext.Find<PersonDetails>(pid);
+            return ApplicationContext.Find<PersonDetails>(personid);
         }
 
         public void InsertPerson(PersonDetails person)
@@ -46,5 +48,11 @@ namespace ServiceLayer
             ApplicationContext.Update<PersonDetails>(person);
             ApplicationContext.SaveChanges();
         }
+
+        //public void History(int bookid)
+        //{
+            
+        //}
+
     }
 }

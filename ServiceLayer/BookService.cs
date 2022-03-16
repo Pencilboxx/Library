@@ -16,10 +16,10 @@ namespace ServiceLayer
             ApplicationContext = applicationContext;
             
         }
-        public void DeleteBook(int id)
+        public void DeleteBook(int bookid)
         {
-            BookDetails b=GetBookDetails(id);
-            if(id!=null)
+            BookDetails b=GetBookDetails(bookid);
+            if(bookid!=null)
             {
                 ApplicationContext.Remove< BookDetails > (b);
                 ApplicationContext.SaveChanges();
@@ -33,9 +33,9 @@ namespace ServiceLayer
 
         }
 
-        public BookDetails GetBookDetails(int bid)
+        public BookDetails GetBookDetails(int bookid)
         {
-            return ApplicationContext.Find<BookDetails>(bid);
+            return ApplicationContext.Find<BookDetails>(bookid);
         }
 
         public void InsertBook(BookDetails book)
@@ -49,5 +49,7 @@ namespace ServiceLayer
             ApplicationContext.Update<BookDetails>(book);
             ApplicationContext.SaveChanges();
         }
+
+        
     }
 }

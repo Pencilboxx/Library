@@ -11,9 +11,10 @@ namespace ServiceLayer
     public interface IPersonDetails
     {
         IList<PersonDetails> GetPersonDetails();
-        PersonDetails GetPersonDetails(int pid);
+        PersonDetails GetPersonDetails(int personid);
         void InsertPerson(PersonDetails person);
         void UpdatePerson(PersonDetails person);
-        void DeletePerson(int id);
+        void DeletePerson(int personid);
+        //void History(int bookid);
     }
 }

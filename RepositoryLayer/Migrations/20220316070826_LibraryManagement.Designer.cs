@@ -9,7 +9,7 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220315135232_LibraryManagement")]
+    [Migration("20220316070826_LibraryManagement")]
     partial class LibraryManagement
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,36 +22,33 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Model.BookDetails", b =>
                 {
-                    b.Property<int>("BookId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("BookName")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Author")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BookName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Edition")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.HasKey("BookId");
+                    b.Property<int>("YoP")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookName");
 
                     b.ToTable("BookDetails");
                 });
 
             modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
                 {
-                    b.Property<int>("PersonId")
+                    b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IssueDate")
@@ -60,10 +57,13 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ReceivedDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PersonId");
+                    b.HasKey("BookId");
 
                     b.ToTable("PersonDetails");
                 });

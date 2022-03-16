@@ -13,8 +13,8 @@ namespace ServiceLayer
         IList<PersonDetails> GetPersonDetails();
         PersonDetails GetPersonDetails(int personid);
         void InsertPerson(PersonDetails person);
-        void UpdatePerson(PersonDetails person);
+        
         void DeletePerson(int personid);
-        //void History(int bookid);
+      
     }
 }

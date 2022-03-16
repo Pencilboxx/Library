@@ -11,7 +11,7 @@ namespace DomainLayer.Model
     public class BookDetails
     {
         [Key]
-        [ForeignKey("BookId")]
+        //[ForeignKey("BookId")]
         public int BookId { get; set; }
        
         

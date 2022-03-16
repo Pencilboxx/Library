@@ -43,16 +43,8 @@ namespace ServiceLayer
             ApplicationContext.SaveChanges();
         }
 
-        public void UpdatePerson(PersonDetails person)
-        {
-            ApplicationContext.Update<PersonDetails>(person);
-            ApplicationContext.SaveChanges();
-        }
-
-        //public void History(int bookid)
-        //{
-            
-        //}
+       
+       
 
     }
 }

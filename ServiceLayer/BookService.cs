@@ -16,16 +16,7 @@ namespace ServiceLayer
             ApplicationContext = applicationContext;
             
         }
-        public void DeleteBook(int bookid)
-        {
-            BookDetails b=GetBookDetails(bookid);
-            if(bookid!=null)
-            {
-                ApplicationContext.Remove< BookDetails > (b);
-                ApplicationContext.SaveChanges();
-            }
-           
-        }
+   
 
         public IList<BookDetails> GetBookDetails()
         {
@@ -44,12 +35,7 @@ namespace ServiceLayer
             ApplicationContext.SaveChanges();
         }
 
-        public void UpdateBook(BookDetails book)
-        {
-            ApplicationContext.Update<BookDetails>(book);
-            ApplicationContext.SaveChanges();
-        }
-
+      
         
     }
 }

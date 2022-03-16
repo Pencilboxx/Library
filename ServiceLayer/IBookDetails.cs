@@ -13,8 +13,8 @@ namespace ServiceLayer
         IList<BookDetails> GetBookDetails();
         BookDetails GetBookDetails(int bookid);
         void InsertBook(BookDetails book);
-        void UpdateBook(BookDetails book);
-        void DeleteBook(int bookid);
+        
+      
 
         
 

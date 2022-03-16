@@ -57,25 +57,7 @@ namespace Library.Controllers
             return Ok("Book added");
         }
 
-        [HttpPut]
-        [Route("[action]/Update_Book")]
-
-        public ActionResult UpdateBooks(BookDetails bookDetails)
-        {
-
-            BookService.UpdateBook(bookDetails);
-            return Ok("Book updated");
-        }
-
-        [HttpDelete]
-        [Route("[action]/Delete_Book")]
-
-        public ActionResult DeleteBooks(int bookid)
-        {
-
-            BookService.DeleteBook(bookid);
-            return Ok("Book Deleted");
-        }
+     
 
         #endregion
 

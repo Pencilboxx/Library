@@ -47,6 +47,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [Route("[action]/insert_person")]
 
         public ActionResult AddPerson(PersonDetails personDetails)
         {
@@ -55,14 +56,8 @@ namespace Library.Controllers
             return Ok("Person added");
         }
 
-        [HttpPut]
-
-        public ActionResult UpdatePerson(PersonDetails personDetails)
-        {
-
-            PersonService.UpdatePerson(personDetails);
-            return Ok("Person updated");
-        }
+        
+     
 
         [HttpDelete]
 

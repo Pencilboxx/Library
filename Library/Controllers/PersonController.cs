@@ -27,7 +27,7 @@ namespace Library.Controllers
         public ActionResult GetPersonDetails()
         {
             var persons = PersonService.GetPersonDetails();
-            if (persons != null && persons.Count > 1)
+            if (persons != null && persons.Count > 0)
             {
                 return Ok(persons);
             }
@@ -35,10 +35,10 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/bid")]
-        public ActionResult GetBook(int bid)
+        [Route("[action]/personid")]
+        public ActionResult GetBook(int personid)
         {
-            var person = PersonService.GetPersonDetails(bid);
+            var person = PersonService.GetPersonDetails(personid);
             if (person != null)
             {
                 return Ok(person);
@@ -61,17 +61,19 @@ namespace Library.Controllers
         {
 
             PersonService.UpdatePerson(personDetails);
-            return Ok("Book updated");
+            return Ok("Person updated");
         }
 
         [HttpDelete]
 
-        public ActionResult DeletePerson(int id)
+        public ActionResult DeletePerson(int personid)
         {
 
-            PersonService.DeletePerson(id);
-            return Ok("Person Deleted");
+            PersonService.DeletePerson(personid);
+            return Ok("Person Removed");
         }
+
+       
 
         #endregion
 

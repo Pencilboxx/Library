@@ -11,11 +11,12 @@ namespace ServiceLayer
     public interface IBookDetails
     {
         IList<BookDetails> GetBookDetails();
-        BookDetails GetBookDetails(int bid);
+        BookDetails GetBookDetails(int bookid);
         void InsertBook(BookDetails book);
         void UpdateBook(BookDetails book);
-        void DeleteBook(int id);
+        void DeleteBook(int bookid);
 
+        
 
     }
 }

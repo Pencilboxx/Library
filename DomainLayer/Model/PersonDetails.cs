@@ -10,11 +10,13 @@ namespace DomainLayer.Model
     public class PersonDetails
     {
         [Key]
-        public int PersonId { get; set; }
+        public int BookId { get; set; }
+       
+        [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int BookId { get; set; }
 
+        public int PersonId { get; set; }
         public string IssueDate { get; set; }
         public string ReceivedDate { get; set; }
     }

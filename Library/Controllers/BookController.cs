@@ -28,7 +28,7 @@ namespace Library.Controllers
         public ActionResult GetBookDetails()
         {
             var books =BookService.GetBookDetails();
-            if(books != null && books.Count>1)
+            if(books != null && books.Count>0)
             {
                 return Ok(books);
             }
@@ -36,10 +36,10 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/bid")]
-        public ActionResult GetBook(int bid)
+        [Route("[action]/one_book_details")]
+        public ActionResult GetBook(int bookid)
         {
-            var book = BookService.GetBookDetails(bid);
+            var book = BookService.GetBookDetails(bookid);
             if (book != null)
             {
                 return Ok(book);
@@ -48,6 +48,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [Route("[action]/insert_book")]
 
         public ActionResult AddBook(BookDetails bookDetails )
         {
@@ -57,6 +58,7 @@ namespace Library.Controllers
         }
 
         [HttpPut]
+        [Route("[action]/Update_Book")]
 
         public ActionResult UpdateBooks(BookDetails bookDetails)
         {
@@ -66,11 +68,12 @@ namespace Library.Controllers
         }
 
         [HttpDelete]
+        [Route("[action]/Delete_Book")]
 
-        public ActionResult DeleteBooks(int id)
+        public ActionResult DeleteBooks(int bookid)
         {
 
-            BookService.DeleteBook(id);
+            BookService.DeleteBook(bookid);
             return Ok("Book Deleted");
         }
 

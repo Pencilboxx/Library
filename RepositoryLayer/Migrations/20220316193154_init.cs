@@ -2,7 +2,7 @@
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class LibraryManagement : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,31 +10,30 @@ namespace RepositoryLayer.Migrations
                 name: "BookDetails",
                 columns: table => new
                 {
-                    BookName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     YoP = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookDetails", x => x.BookName);
+                    table.PrimaryKey("PK_BookDetails", x => x.BookId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "PersonDetails",
                 columns: table => new
                 {
-                    BookId = table.Column<int>(type: "int", nullable: false)
+                    PersonId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PersonId = table.Column<int>(type: "int", nullable: false),
-                    IssueDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ReceivedDate = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonDetails", x => x.BookId);
+                    table.PrimaryKey("PK_PersonDetails", x => x.PersonId);
                 });
         }
 

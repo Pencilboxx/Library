@@ -15,6 +15,7 @@ namespace ServiceLayer
         void InsertPerson(PersonDetails person);
         
         void DeletePerson(int personid);
+        void UpdatePerson(PersonDetails person);
       
     }
 }

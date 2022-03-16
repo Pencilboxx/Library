@@ -1,6 +1,7 @@
 ﻿using DomainLayer.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using ServiceLayer;
 
 namespace Library.Controllers
@@ -43,6 +44,8 @@ namespace Library.Controllers
             {
                 return Ok(person);
             }
+
+
             return BadRequest("Not Found");
         }
 
@@ -55,7 +58,13 @@ namespace Library.Controllers
             PersonService.InsertPerson(personDetails);
             return Ok("Person added");
         }
+        [HttpPut]
 
+        public ActionResult UpdatePerson(PersonDetails personDetails)
+        {
+            PersonService.UpdatePerson(personDetails);
+            return Ok("Updated");
+        }
         
      
 

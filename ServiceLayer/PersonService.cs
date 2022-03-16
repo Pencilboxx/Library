@@ -34,12 +34,20 @@ namespace ServiceLayer
 
         public PersonDetails GetPersonDetails(int personid)
         {
+
+            
             return ApplicationContext.Find<PersonDetails>(personid);
         }
 
         public void InsertPerson(PersonDetails person)
         {
             ApplicationContext.Add<PersonDetails>(person);
+            ApplicationContext.SaveChanges();
+        }
+
+        public void UpdatePerson(PersonDetails person)
+        {
+            ApplicationContext.Update<PersonDetails>(person);
             ApplicationContext.SaveChanges();
         }
 

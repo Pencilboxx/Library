@@ -61,8 +61,10 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
                 {
-                    b.Property<string>("PersonId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("PersonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");

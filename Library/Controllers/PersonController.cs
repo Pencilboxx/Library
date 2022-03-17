@@ -1,8 +1,9 @@
 ﻿using DomainLayer.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Logging;
 using ServiceLayer;
+using System;
 
 namespace Library.Controllers
 {
@@ -11,11 +12,13 @@ namespace Library.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonDetails PersonService;
+        private readonly ILogger<PersonController>_logger;
 
         #region "constructor init"
-        public PersonController(IPersonDetails personService)
+        public PersonController(IPersonDetails personService, ILogger<PersonController> logger)
         {
             PersonService = personService;
+            _logger = logger;
 
 
         }
@@ -27,11 +30,22 @@ namespace Library.Controllers
         [Route("[action]")]
         public ActionResult GetPersonDetails()
         {
-            var persons = PersonService.GetPersonDetails();
-            if (persons != null && persons.Count > 0)
+            try
             {
-                return Ok(persons);
+                _logger.LogInformation("Get All Person Details endpoint start");
+                var persons = PersonService.GetPersonDetails();
+                if (persons != null && persons.Count > 0)
+                {
+                    return Ok(persons);
+                }
+                _logger.LogInformation("Get All Person Details endpoint complete");
+
             }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+           
             return BadRequest("Not Found");
         }
 
@@ -39,11 +53,21 @@ namespace Library.Controllers
         [Route("[action]/personid")]
         public ActionResult GetBook(int personid)
         {
-            var person = PersonService.GetPersonDetails(personid);
-            if (person != null)
+            try
             {
-                return Ok(person);
+                _logger.LogInformation("Get One Person Details endpoint start");
+                var person = PersonService.GetPersonDetails(personid);
+                if (person != null)
+                {
+                    return Ok(person);
+                }
+                _logger.LogInformation("Get One Person Details endpoint complete");
             }
+            catch (Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+           
 
 
             return BadRequest("Not Found");
@@ -54,15 +78,37 @@ namespace Library.Controllers
 
         public ActionResult AddPerson(PersonDetails personDetails)
         {
+            try
+            {
+                _logger.LogInformation("Add Person Details endpoint start");
+                PersonService.InsertPerson(personDetails);
+                _logger.LogInformation("Add Person Details endpoint complete");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
 
-            PersonService.InsertPerson(personDetails);
+           
             return Ok("Person added");
         }
         [HttpPut]
 
         public ActionResult UpdatePerson(PersonDetails personDetails)
         {
-            PersonService.UpdatePerson(personDetails);
+            try
+            {
+                _logger.LogInformation("Update Person Details endpoint start");
+
+                PersonService.UpdatePerson(personDetails);
+
+                _logger.LogInformation("Update Person Details endpoint complete");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+            
             return Ok("Updated");
         }
         
@@ -72,8 +118,18 @@ namespace Library.Controllers
 
         public ActionResult DeletePerson(int personid)
         {
+            try
+            {
+                _logger.LogInformation("Delete Person Details endpoint start");
+                PersonService.DeletePerson(personid);
+                _logger.LogInformation("Delete Person Details endpoint complete");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
 
-            PersonService.DeletePerson(personid);
+            
             return Ok("Person Removed");
         }
 

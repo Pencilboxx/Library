@@ -39,7 +39,8 @@ namespace RepositoryLayer.Migrations
                 name: "PersonDetails",
                 columns: table => new
                 {
-                    PersonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PersonId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<int>(type: "int", nullable: false)

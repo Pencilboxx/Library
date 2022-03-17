@@ -13,7 +13,7 @@ namespace DomainLayer.Model
         
         [Key]
 
-        public string PersonId { get; set; }
+        public int PersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 

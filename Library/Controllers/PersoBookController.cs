@@ -1,7 +1,9 @@
 ﻿using DomainLayer.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ServiceLayer;
+using System;
 
 namespace Library.Controllers
 {
@@ -10,12 +12,15 @@ namespace Library.Controllers
     public class PersoBookController : ControllerBase
     {
         private readonly IPersoBookDetails PersoBookService;
+        private readonly ILogger<PersoBookController> _logger;
 
 
-        public PersoBookController(IPersoBookDetails persoBookService )
+        public PersoBookController(IPersoBookDetails persoBookService, ILogger<PersoBookController> logger)
         {
 
             PersoBookService= persoBookService;
+            _logger= logger;
+
 
         }
 
@@ -23,11 +28,21 @@ namespace Library.Controllers
         [Route("[action]")]
         public ActionResult GetPersoBooks()
         {
-            var books = PersoBookService.GetPersoBooks();
-            if (books != null )
+            try
             {
-                return Ok(books);
+                _logger.LogInformation("Get All Assigned Books endpoint start");
+                var books = PersoBookService.GetPersoBooks();
+                if (books != null)
+                {
+                    return Ok(books);
+                }
+                _logger.LogInformation("Get All Assigned Books endpoint complete");
             }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+            
             return BadRequest("Not Found");
         }
 
@@ -35,11 +50,21 @@ namespace Library.Controllers
         [Route("[action]/")]
         public ActionResult GetBook(string bookid)
         {
-            var book = PersoBookService.GetPersoBooks(bookid);
-            if (book != null)
+            try
             {
-                return Ok(book);
+                _logger.LogInformation("Get Books endpoint start");
+                var book = PersoBookService.GetPersoBooks(bookid);
+                if (book != null)
+                {
+                    return Ok(book);
+                }
+                _logger.LogInformation("Get Books endpoint complete");
             }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+           
             return BadRequest("Not Found");
         }
 
@@ -50,8 +75,18 @@ namespace Library.Controllers
 
         public ActionResult AddBook(PersoBooks book)
         {
+            try
+            {
+                _logger.LogInformation(" assign Books endpoint start");
+                PersoBookService.InsertBookIn(book);
+                _logger.LogInformation(" assign Books endpoint complete");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
 
-            PersoBookService.InsertBookIn(book);
+          
             return Ok("Issued");
         }
 
@@ -59,7 +94,17 @@ namespace Library.Controllers
 
         public ActionResult UpdatePerson(PersoBooks book)
         {
-            PersoBookService.UpdateBookIn(book);
+            try
+            {
+                _logger.LogInformation(" Update book endpoint start");
+                PersoBookService.UpdateBookIn(book);
+                _logger.LogInformation(" Update book endpoint complete");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Exception occured;Exception detail:" + ex.InnerException);
+            }
+           
             return Ok("Updated");
         }
 

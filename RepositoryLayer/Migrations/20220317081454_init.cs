@@ -22,6 +22,20 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PersoBooks",
+                columns: table => new
+                {
+                    Slid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    PersonId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersoBooks", x => x.Slid);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PersonDetails",
                 columns: table => new
                 {
@@ -29,7 +43,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BookId = table.Column<int>(type: "int", nullable: false)
+                    Phone = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,6 +55,9 @@ namespace RepositoryLayer.Migrations
         {
             migrationBuilder.DropTable(
                 name: "BookDetails");
+
+            migrationBuilder.DropTable(
+                name: "PersoBooks");
 
             migrationBuilder.DropTable(
                 name: "PersonDetails");

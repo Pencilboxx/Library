@@ -9,7 +9,7 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220316193154_init")]
+    [Migration("20220317081454_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,9 +43,9 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("BookDetails");
                 });
 
-            modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
+            modelBuilder.Entity("DomainLayer.Model.PersoBooks", b =>
                 {
-                    b.Property<int>("PersonId")
+                    b.Property<int>("Slid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -53,11 +53,29 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Slid");
+
+                    b.ToTable("PersoBooks");
+                });
+
+            modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
+                {
+                    b.Property<int>("PersonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.HasKey("PersonId");
 

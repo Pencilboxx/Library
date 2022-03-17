@@ -50,7 +50,7 @@ namespace Library.Controllers
         {
 
             PersoBookService.InsertBookIn(book);
-            return Ok("Book added");
+            return Ok("Issued");
         }
 
         [HttpPut]

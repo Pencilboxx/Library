@@ -14,8 +14,10 @@ namespace RepositoryLayer
         {
 
         }
-        DbSet<BookDetails> BookDetails { get; set; }
-        DbSet<PersonDetails> PersonDetails { get; set; }
+        public DbSet<BookDetails> BookDetails { get; set; }
+        public  DbSet<PersonDetails> PersonDetails { get; set; }
+       public DbSet<PersoBooks> PersoBooks { get; set; }
+        
 
       
     }

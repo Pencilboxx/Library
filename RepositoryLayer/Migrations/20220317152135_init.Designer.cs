@@ -9,8 +9,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220316070826_LibraryManagement")]
-    partial class LibraryManagement
+    [Migration("20220317152135_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,48 +22,62 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Model.BookDetails", b =>
                 {
-                    b.Property<string>("BookName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YoP")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookName");
-
-                    b.ToTable("BookDetails");
-                });
-
-            modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
-                {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Author")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IssueDate")
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("YoP")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookId");
+
+                    b.ToTable("BookDetails");
+                });
+
+            modelBuilder.Entity("DomainLayer.Model.PersoBooks", b =>
+                {
+                    b.Property<int>("Slid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BookId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PersonId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Slid");
+
+                    b.ToTable("PersoBooks");
+                });
+
+            modelBuilder.Entity("DomainLayer.Model.PersonDetails", b =>
+                {
+                    b.Property<int>("PersonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonId")
+                    b.Property<int>("Phone")
                         .HasColumnType("int");
 
-                    b.Property<string>("ReceivedDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("BookId");
+                    b.HasKey("PersonId");
 
                     b.ToTable("PersonDetails");
                 });

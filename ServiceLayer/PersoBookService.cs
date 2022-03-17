@@ -21,9 +21,9 @@ namespace ServiceLayer
             return ApplicationContext.Set<PersoBooks>().ToList();
         }
 
-        public PersoBooks GetPersoBooks(int bookid)
+        public IList<PersoBooks> GetPersoBooks(string bookid)
         {
-            return ApplicationContext.PersoBooks.Where(x => x.BookId == bookid).FirstOrDefault();
+            return ApplicationContext.PersoBooks.Where(x => x.BookId == bookid).ToList();
         }
 
 

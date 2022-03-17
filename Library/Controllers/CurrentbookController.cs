@@ -29,7 +29,7 @@ namespace Library.Controllers
         //}
         [HttpGet]
         [Route("[action]/")]
-        public ActionResult GetCurrentBook(int personid)
+        public ActionResult GetCurrentBook(string personid)
         {
             var pid = Currentbook.GetCurrentBook(personid);
             if (pid != null )

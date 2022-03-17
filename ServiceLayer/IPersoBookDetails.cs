@@ -10,7 +10,7 @@ namespace ServiceLayer
     public interface IPersoBookDetails
     {
         IList<PersoBooks> GetPersoBooks();
-        PersoBooks GetPersoBooks(int bookid);
+        IList<PersoBooks>GetPersoBooks(string bookid);
 
         void InsertBookIn(PersoBooks book);
         void UpdateBookIn(PersoBooks book);

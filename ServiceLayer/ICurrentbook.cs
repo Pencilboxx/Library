@@ -10,6 +10,6 @@ namespace ServiceLayer
     public interface ICurrentbook
     {
         IList<PersoBooks> GetPersoBooks();
-        PersoBooks GetCurrentBook(int personid);
+        IList<PersoBooks> GetCurrentBook(string personid);
     }
 }

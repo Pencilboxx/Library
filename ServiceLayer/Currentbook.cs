@@ -20,9 +20,9 @@ namespace ServiceLayer
         {
             return ApplicationContext.Set<PersoBooks>().ToList();
         }
-        public PersoBooks GetCurrentBook(int personid)
+        public IList<PersoBooks> GetCurrentBook(string personid)
         {
-            return ApplicationContext.PersoBooks.Where(x=>x.PersonId==personid).FirstOrDefault();
+            return ApplicationContext.PersoBooks.Where(x=>x.PersonId==personid).ToList();
         }
     }
 }

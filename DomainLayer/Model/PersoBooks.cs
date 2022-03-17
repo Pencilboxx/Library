@@ -11,7 +11,7 @@ namespace DomainLayer.Model
     {
         [Key]
         public int Slid { get; set; }
-        public int BookId { get; set; }
-        public int PersonId { get; set; }
+        public string BookId { get; set; }
+        public string PersonId { get; set; }
     }
 }

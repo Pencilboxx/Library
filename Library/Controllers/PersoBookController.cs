@@ -24,7 +24,7 @@ namespace Library.Controllers
         public ActionResult GetPersoBooks()
         {
             var books = PersoBookService.GetPersoBooks();
-            if (books != null && books.Count>1)
+            if (books != null )
             {
                 return Ok(books);
             }
@@ -33,10 +33,10 @@ namespace Library.Controllers
 
         [HttpGet]
         [Route("[action]/")]
-        public ActionResult GetBook(int bookid)
+        public ActionResult GetBook(string bookid)
         {
             var book = PersoBookService.GetPersoBooks(bookid);
-            if (book != null )
+            if (book != null)
             {
                 return Ok(book);
             }

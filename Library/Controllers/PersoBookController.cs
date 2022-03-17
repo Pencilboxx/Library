@@ -24,7 +24,7 @@ namespace Library.Controllers
         public ActionResult GetPersoBooks()
         {
             var books = PersoBookService.GetPersoBooks();
-            if (books != null && books.Count > 1)
+            if (books != null && books.Count>1)
             {
                 return Ok(books);
             }
@@ -36,12 +36,14 @@ namespace Library.Controllers
         public ActionResult GetBook(int bookid)
         {
             var book = PersoBookService.GetPersoBooks(bookid);
-            if (book != null)
+            if (book != null )
             {
                 return Ok(book);
             }
             return BadRequest("Not Found");
         }
+
+        
 
         [HttpPost]
         [Route("[action]/")]

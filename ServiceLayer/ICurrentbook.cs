@@ -7,15 +7,9 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer
 {
-    public interface IPersoBookDetails
+    public interface ICurrentbook
     {
         IList<PersoBooks> GetPersoBooks();
-        PersoBooks GetPersoBooks(int bookid);
-
-        void InsertBookIn(PersoBooks book);
-        void UpdateBookIn(PersoBooks book);
-
-
-
+        PersoBooks GetCurrentBook(int personid);
     }
 }

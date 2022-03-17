@@ -36,6 +36,7 @@ namespace Library
             services.AddScoped<IBookDetails, BookService>();
             services.AddScoped<IPersonDetails, PersonService>();
             services.AddScoped<IPersoBookDetails, PersoBookService>();
+            services.AddScoped<ICurrentbook, Currentbook>();
             services.AddDbContext<ApplicationContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
             services.AddSwaggerGen(c =>
             {

@@ -27,7 +27,7 @@ namespace Library.Controllers
         #region "Api core func"
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("/All Person Details")]
         public ActionResult GetPersonDetails()
         {
             try
@@ -50,7 +50,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/personid")]
+        [Route("/One Person Details")]
         public ActionResult GetBook(int personid)
         {
             try
@@ -74,7 +74,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
-        [Route("[action]/insert_person")]
+        [Route("/Insert Person Details")]
 
         public ActionResult AddPerson(PersonDetails personDetails)
         {
@@ -93,6 +93,7 @@ namespace Library.Controllers
             return Ok("Person added");
         }
         [HttpPut]
+        [Route("/Update Person Details")]
 
         public ActionResult UpdatePerson(PersonDetails personDetails)
         {
@@ -115,6 +116,7 @@ namespace Library.Controllers
      
 
         [HttpDelete]
+        [Route("/Delete Person Details")]
 
         public ActionResult DeletePerson(int personid)
         {

@@ -22,7 +22,7 @@ namespace Library.Controllers
         }
       
         [HttpGet]
-        [Route("[action]/")]
+        [Route("/Person's Current Book ")]
         public ActionResult GetCurrentBook(string personid)
         {
             try

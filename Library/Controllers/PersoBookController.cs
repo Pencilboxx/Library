@@ -25,7 +25,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]")]
+        [Route("/All Books Assigned To Person")]
         public ActionResult GetPersoBooks()
         {
             try
@@ -47,7 +47,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/")]
+        [Route("/History Of Book")]
         public ActionResult GetBook(string bookid)
         {
             try
@@ -71,7 +71,7 @@ namespace Library.Controllers
         
 
         [HttpPost]
-        [Route("[action]/")]
+        [Route("/Assigning Book")]
 
         public ActionResult AddBook(PersoBooks book)
         {
@@ -91,6 +91,7 @@ namespace Library.Controllers
         }
 
         [HttpPut]
+        [Route("/Removing The Book")]
 
         public ActionResult UpdatePerson(PersoBooks book)
         {

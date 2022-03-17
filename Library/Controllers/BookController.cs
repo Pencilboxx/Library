@@ -27,7 +27,7 @@ namespace Library.Controllers
         #region "Api core func"
         
         [HttpGet]
-        [Route("[action]")]
+        [Route("/All Book Details")]
         public ActionResult GetBookDetails()
         {
             try
@@ -51,7 +51,7 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/one_book_details")]
+        [Route("/One Book Details")]
         public ActionResult GetBook(int bookid)
         {
             try
@@ -74,7 +74,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
-        [Route("[action]/insert_book")]
+        [Route("/Insert Book")]
 
         public ActionResult AddBook(BookDetails bookDetails )
         {
